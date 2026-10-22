@@ -25,8 +25,13 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏭ deferred to a lat
 | | Google Calendar, Spotify, GitHub, Oura connectors | ✅ |
 | | `/connect` page | ✅ |
 | **M7 Landing** | Landing page | ✅ |
-| **M8 Ship** | Typecheck + build | ✅ |
+| **M8 Ship** | Lint + typecheck + production build | ✅ |
+| | Browser check: landing, dashboard, story, connect (demo mode) | ✅ |
+| | Unit tests for `angles.ts` / `validate.ts` | ⬜ |
+| | Real-account test of each OAuth connector | ⬜ needs OAuth credentials |
 | | Deploy to Vercel | ⬜ needs Vercel account + OAuth credentials |
+| **UI v2** | Light linen theme (tokens, tapestry re-dyed with multiply blending) | ✅ |
+| | Purl mascot: hero, Meet Purl section, loader, dashboard greeting, story narrator, connect, empty tiles | ✅ |
 | **v1.1** | Postgres history, week-over-week, Sunday email | ⏭ |
 | **v1.2** | Share pages + OG images, Apple Health import | ⏭ |
 

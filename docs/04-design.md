@@ -6,6 +6,8 @@
 2. **One color per thread.** Users learn the four colors once and can read any chart afterwards.
 3. **Editorial, not dashboard-y.** Big serif numbers, generous whitespace, sentences before charts.
 4. **Motion has meaning.** Things move along the loom: horizontally for time, vertically for layers.
+5. **Light and warm.** Linen surfaces, paper cards with soft shadows, ink text. Color comes from the threads, not the chrome.
+6. **A friend in the room.** Purl, the yarn-ball mascot, greets, narrates and reacts so the data never feels clinical.
 
 ## 2. Information architecture
 
@@ -24,14 +26,17 @@
 - Primary CTA: "Weave my week" (enabled with ≥ 1 source). Secondary: "Try a demo week".
 
 ### 3.2 Story (`/story`)
-- Full viewport, black loom background, one card at a time.
+- Full viewport, linen background tinted with the card's thread color, one card at a time.
+- Purl sits bottom-right and narrates each card with a one-line bubble and a matching mood.
 - Top: segmented progress bars (one per card), filling over 6s each, in the signature gradient.
 - Tap right 2/3 = next, left 1/3 = back, hold = pause. Keys: ←/→, space, Esc closes.
 - Card anatomy: eyebrow (mono, thread color) → headline (Instrument Serif, 3–6rem) → stat or list → body (Geist, 1.125rem, max 36ch).
 - Each card has a background treatment tied to its source: drifting threads in that color, at 20% opacity.
-- Final card: the full tapestry, title of the week, "Replay" and "Save image" buttons.
+- Final card: the full tapestry, an excited Purl, title of the week, "Replay" and "Save image" buttons.
 
 ### 3.3 Dashboard (`/week`) — bento grid
+Above the grid: a greeting banner with a waving Purl, the week range and "Purl noticed: <top insight>".
+
 Desktop: 12-column grid, 4 rows. Mobile: single column, same order.
 
 ```
@@ -68,6 +73,7 @@ Desktop: 12-column grid, 4 rows. Mobile: single column, same order.
 | `CommitHeat` | 7 × 24 hour heatmap |
 | `ThreadChip` | Source icon in tinted chip |
 | `Logo` | Mark + wordmark |
+| `Purl` / `PurlSays` | Mascot SVG with 6 moods; optional speech bubble |
 
 ## 5. Motion tokens
 

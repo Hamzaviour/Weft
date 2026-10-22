@@ -68,34 +68,40 @@ rather than as a grid.
 
 ## 5. Color
 
-The base is a near-black "loom" with warm bone text. Each data source owns one thread color, used
-consistently everywhere: charts, card accents, connection chips and the generative art.
+Weft is a **light, linen-toned** brand: warm paper surfaces, deep plum-black ink, and four vivid
+thread colors. Each data source owns one thread color, used consistently everywhere: charts, card
+accents, connection chips, Purl's yarn and the generative art.
 
 ### Neutrals
 
 | Token | Hex | Use |
 |---|---|---|
-| `--loom` | `#0B0A10` | App background |
-| `--loom-2` | `#14121C` | Raised surfaces, cards |
-| `--loom-3` | `#1E1B29` | Borders, hover |
-| `--bone` | `#F3EEE6` | Primary text |
-| `--ash` | `#9A94A6` | Secondary text |
-| `--dust` | `#5E5869` | Tertiary text, disabled |
+| `--loom` | `#F7F2EA` Linen | App background |
+| `--loom-2` | `#FFFDF9` Paper | Cards, tiles, bubbles |
+| `--loom-3` | `#EBE3D6` | Borders |
+| `--loom-4` | `#DDD2C2` | Strong borders, dashed empty states |
+| `--bone` | `#221C29` Ink | Primary text, primary buttons |
+| `--ash` | `#6B6273` | Secondary text |
+| `--dust` | `#9D9389` | Tertiary text, labels |
+
+(Token names are semantic and historical: `loom` is always the surface, `bone` is always the ink.)
 
 ### Threads (one per source)
 
-| Token | Hex | Source | Meaning |
+Each thread has a **vivid** value for fills, lines and art, and a deeper **ink** value for text on linen.
+
+| Source | Thread | Vivid | Ink (text, AA) |
 |---|---|---|---|
-| `--thread-time` | `#FFB547` Saffron | Calendar | Time, structure |
-| `--thread-sound` | `#A78BFF` Ultraviolet | Spotify | Mood, sound |
-| `--thread-craft` | `#4BE3AC` Mint | GitHub | Making, building |
-| `--thread-body` | `#FF6B7A` Coral | Health | Body, energy |
+| Calendar | Time · Saffron | `#F5A524` | `#A35F00` |
+| Spotify | Sound · Violet | `#8B6CF6` | `#6847D6` |
+| GitHub | Craft · Mint | `#1FB98A` | `#0B7F5C` |
+| Health | Body · Coral | `#F2546A` | `#C22E4A` |
 
-**Signature gradient** (used sparingly: hero, story progress bars, share card):
-`linear-gradient(100deg, #FFB547 0%, #FF6B7A 35%, #A78BFF 70%, #4BE3AC 100%)`
+**Signature gradient** (hero word, progress bars, play buttons):
+`linear-gradient(100deg, #F5A524 0%, #F2546A 35%, #8B6CF6 70%, #1FB98A 100%)`.
+For gradient *text*, use the deeper `--weave-ink` variant so it stays readable on linen.
 
-Light mode inverts neutrals (`--loom #F7F3EC`, `--bone #15131B`) and darkens threads by ~12% for
-contrast. All thread colors pass WCAG AA (≥ 4.5:1) as text on `--loom`.
+**Elevation:** soft, warm shadows instead of borders-only (`--shadow-soft` at rest, `--shadow-lift` on hover).
 
 ## 6. Typography
 
@@ -116,15 +122,43 @@ Scale (rem): 0.75 · 0.875 · 1 · 1.25 · 1.75 · 2.5 · 4 · 6.5. Story cards 
   and never bounce. Story cards advance like pages being turned through a loom.
 - Respect `prefers-reduced-motion`: replace movement with fades and pause the art.
 
-## 8. Iconography
+## 8. Mascot: Purl
+
+**Purl** is a small ball of yarn wound from all four thread colors. Purl is Weft's narrator: it
+greets you, "weaves" while the pipeline runs, comments on each story card and reacts to your week.
+(A *purl* is a basic knitting stitch.)
+
+**Personality:** curious, warm, easily delighted, never judgmental. Purl reacts; it doesn't coach.
+
+**Anatomy:** peach yarn body with violet and saffron wraps on top, mint and coral below; dark outline;
+two oval eyes with highlights; coral cheeks; stubby arms and feet; a loose violet thread for a tail.
+
+**Moods** (`<Purl mood="…" />`):
+
+| Mood | When | Look |
+|---|---|---|
+| `wave` | Greetings, intro card | Right arm waves |
+| `happy` | Default | Soft smile |
+| `excited` | Music on repeat, outro, all threads connected | Open smile, sparkle |
+| `proud` | Big build day | Happy closed eyes, sparkle |
+| `thinking` | Loading, busy calendar, insights | Eyes up, thought bubbles |
+| `sleepy` | Health/sleep cards, late nights, errors, empty tiles | Closed eyes, floating "z" |
+
+**Motion:** gentle 2.6s bob, blink every ~4s, tail sways. All motion stops under reduced motion.
+
+**Usage rules:** one Purl per view section; never larger than the headline it sits next to; Purl's
+speech bubbles are short (under 12 words), first person, lowercase-friendly.
+
+## 9. Iconography
 
 Lucide icons at 1.5px stroke, sized 16/20/24. Source icons sit inside a 24px rounded chip tinted with
 that source's thread color at 14% opacity.
 
-## 9. Copy library
+## 10. Copy library
 
 - Tagline: **Your week, woven.**
 - Secondary: *Four threads. One story. Every Sunday.*
 - CTA: "Weave my week" · "Connect a thread" · "Replay the story"
-- Empty state: "No threads yet. Connect one and we'll start weaving."
+- Empty state (Purl): "No threads yet. Hand me one and I'll start weaving!"
+- Loading (Purl): "Purl is weaving your week…"
 - Share card footer: "woven by weft"

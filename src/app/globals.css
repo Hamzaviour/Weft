@@ -1,26 +1,138 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light "linen" theme. Token names stay semantic: loom = surface, bone = ink. */
+  --loom: #f7f2ea;
+  --loom-2: #fffdf9;
+  --loom-3: #ebe3d6;
+  --loom-4: #ddd2c2;
+  --bone: #221c29;
+  --ash: #6b6273;
+  --dust: #9d9389;
+
+  /* Vivid threads for fills, lines and art. */
+  --thread-time: #f5a524;
+  --thread-sound: #8b6cf6;
+  --thread-craft: #1fb98a;
+  --thread-body: #f2546a;
+
+  /* Deeper "ink" versions of each thread for text on linen (WCAG AA). */
+  --ink-time: #a35f00;
+  --ink-sound: #6847d6;
+  --ink-craft: #0b7f5c;
+  --ink-body: #c22e4a;
+
+  --weave: linear-gradient(100deg, #f5a524 0%, #f2546a 35%, #8b6cf6 70%, #1fb98a 100%);
+  --weave-ink: linear-gradient(100deg, #d98a00 0%, #e23d5a 35%, #7352ec 70%, #10a077 100%);
+  --ease-loom: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --shadow-soft: 0 1px 2px rgba(34, 28, 41, 0.04), 0 8px 24px -12px rgba(34, 28, 41, 0.12);
+  --shadow-lift: 0 2px 4px rgba(34, 28, 41, 0.05), 0 24px 48px -20px rgba(34, 28, 41, 0.22);
+
+  color-scheme: light;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-loom: var(--loom);
+  --color-loom-2: var(--loom-2);
+  --color-loom-3: var(--loom-3);
+  --color-loom-4: var(--loom-4);
+  --color-bone: var(--bone);
+  --color-ash: var(--ash);
+  --color-dust: var(--dust);
+  --color-time: var(--thread-time);
+  --color-sound: var(--thread-sound);
+  --color-craft: var(--thread-craft);
+  --color-body: var(--thread-body);
+  --color-time-ink: var(--ink-time);
+  --color-sound-ink: var(--ink-sound);
+  --color-craft-ink: var(--ink-craft);
+  --color-body-ink: var(--ink-body);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif);
+  --ease-loom: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--loom);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--loom);
+  color: var(--bone);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--thread-sound) 30%, transparent);
+  color: var(--bone);
+}
+
+.font-display {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-weave {
+  background: var(--weave-ink);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-weave {
+  background: var(--weave);
+}
+
+/* Fine film grain over the whole app, so flat surfaces feel like cloth. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.tile {
+  background: var(--loom-2);
+  border: 1px solid var(--loom-3);
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 320ms var(--ease-loom), transform 320ms var(--ease-loom), box-shadow 320ms var(--ease-loom);
+}
+.tile:hover {
+  border-color: color-mix(in oklab, var(--tile-accent, var(--loom-4)) 55%, var(--loom-3));
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--bone);
+  outline-offset: 3px;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
